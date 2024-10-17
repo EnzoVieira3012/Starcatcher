@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Starcatcher.Api.props" />
+</Project>
