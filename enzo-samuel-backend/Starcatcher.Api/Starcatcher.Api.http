@@ -1,0 +1,28 @@
+@base_url = http://localhost:5153
+
+### Exemplo de requisição GET para um endpoint existente
+GET {{base_url}}/Quota
+Accept: application/json
+
+###
+
+### Exemplo de requisição POST para criar um novo usuário
+POST {{base_url}}/User
+Content-Type: application/json
+
+{
+  "name": "Novo Usuário",
+  "email": "usuario@example.com",
+  "password": "senha123"
+}
+
+###
+
+### Exemplo de autenticação de usuário (login)
+POST {{base_url}}/User/login
+Content-Type: application/json
+
+{
+  "email": "usuario@example.com",
+  "password": "senha123"
+}

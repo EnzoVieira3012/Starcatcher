@@ -1,114 +1,94 @@
-**Starcatcher Backend**
+Documentação do Backend Starcatcher
 
-Este é o backend da aplicação Starcatcher, desenvolvido utilizando ASP.NET Core com uma abordagem de arquitetura limpa.
+Introdução
 
-**Funcionalidades**
+O Starcatcher é um backend desenvolvido em C# utilizando o ASP.NET Core. Ele fornece uma API RESTful para gerenciar consórcios, usuários, cotas e carteiras digitais.
 
-- Autenticação e autorização de usuários utilizando tokens JWT.
-- Operações CRUD para clientes e consórcios.
-- Gerenciamento de cotas e parcelas.
-- Testes unitários integrados para as camadas de serviço e controle.
+Estrutura do Projeto
 
-**Tecnologias Utilizadas**
+- Starcatcher.Api: Contém a aplicação principal da API.
+- Starcatcher.Api.Tests: Contém os testes automatizados para a API.
 
-- ASP.NET Core 8.0
-- Entity Framework Core 9.0
-- Autenticação JWT
-- Docker para SQL Server
-- Moq e xUnit para testes
+Configuração e Instalação
 
-**Endpoints da API**
+Pré-requisitos
 
-**Autenticação (Auth)**
+- .NET SDK 8.0 ou superior
+- SQL Server ou Docker para banco de dados
+- Git para controle de versão
 
-- GET /api/Auth/me: Retorna as informações do usuário autenticado.
-- POST /api/Auth/register: Registra um novo usuário. Requer um payload JSON com Name, Email e Password.
-- POST /api/Auth/login: Autentica um usuário existente. Requer um payload JSON com Email e Password.
-- POST /api/Auth/change-password: Altera a senha do usuário. Requer um payload JSON com Email e NewPassword.
-- PUT /api/Auth/update-email: Atualiza o email do usuário autenticado. Requer um payload JSON com NewEmail.
-- PUT /api/Auth/update-name: Atualiza o nome do usuário autenticado. Requer um payload JSON com NewName.
-- DELETE /api/Auth/delete-account: Deleta a conta do usuário autenticado. Requer um payload JSON com Password.
-
-**Clientes (Client)**
-
-- POST /api/Client: Cria um novo cliente associado ao usuário autenticado. Requer um payload JSON com informações do cliente.
-- GET /api/Client: Retorna todos os clientes associados ao usuário autenticado.
-- PUT /api/Client/{id}: Atualiza as informações de um cliente específico. Requer um payload JSON com as atualizações desejadas.
-- DELETE /api/Client/{id}: Deleta um cliente específico.
-
-**Consórcios (Consortium)**
-
-- POST /api/Consortium: Cria um novo consórcio associado ao usuário autenticado. Requer um payload JSON com informações do consórcio.
-- GET /api/Consortium: Retorna todos os consórcios associados ao usuário autenticado.
-- PUT /api/Consortium/{id}: Atualiza as informações de um consórcio específico. Requer um payload JSON com as atualizações desejadas.
-- DELETE /api/Consortium/{id}: Deleta um consórcio específico.
-- GET /api/Consortium/{consortiumId}/quotas: Retorna todas as cotas associadas a um consórcio específico.
-
-**Cotas (Quota)**
-
-- GET /api/Quota/{quotaId}/installments: Retorna todas as parcelas associadas a uma cota específica.
-- PUT /api/Quota/installments/{installmentId}/pay: Marca uma parcela específica como paga.
-- POST /api/Quota/{quotaId}/link-to-client/{clientId}: Associa uma cota a um cliente específico.
-- GET /api/Quota/client/{clientId}: Retorna todas as cotas associadas a um cliente específico.
-
-**Começando**
-
-**Pré-requisitos**
-
-- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [Docker](https://www.docker.com/products/docker-desktop)
-- [SQL Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)
-
-**Configuração**
+Instalação
 
 1. Clone o repositório:
+   git clone https://bitbucket.org/newm-dev1/enzo-samuel-bff/src/develop/
+   cd Starcatcher
 
-git clone https://github.com/EnzoVieira3012/Starcatcher.git
-cd enzo-samuel-backend
+2. Configure o banco de dados no arquivo appsettings.json:
+   {
+     "ConnectionStrings": {
+       "DefaultConnection": "Server=127.0.0.1;Database=StarcatcherDB;User=SA;Password=Senha123;Encrypt=False;TrustServerCertificate=True"
+     }
+   }
 
-2. Configure a string de conexão do banco de dados no appsettings.json:
-
-"ConnectionStrings": {
-  "DefaultConnection": "Server=localhost,1433;Database=YourDatabaseName;User Id=sa;Password=Your_password123;TrustServerCertificate=True;"
-}
-
-3. Inicie o SQL Server usando Docker:
-
-docker-compose up -d
+3. Execute as migrações do banco de dados:
+   dotnet ef database update
 
 4. Execute a aplicação:
+   dotnet run
 
-cd API
-dotnet run
+Estrutura da API
 
-5. Acesse o Swagger UI para testar a API:
+Endpoints Principais
 
-http://localhost:5000/swagger
+Usuário
 
-**Executando Testes**
+- POST /User: Cria um novo usuário.
+- GET /User: Retorna todos os usuários.
+- GET /User/{id}: Retorna um usuário pelo ID.
+- PUT /User: Atualiza um usuário autenticado.
+- DELETE /User: Deleta o usuário autenticado.
+- POST /User/login: Autentica um usuário e retorna um token.
 
-Navegue até o diretório Tests e execute os testes usando:
+Consórcio
 
-cd Tests
-dotnet test
+- GET /Consortium: Retorna todos os consórcios.
+- GET /Consortium/{id}: Retorna um consórcio pelo ID.
+- POST /Consortium: Cria um novo consórcio.
 
-**Contribuindo**
+Cotas
 
-1. Faça o fork do repositório.
-2. Crie uma nova branch:
+- GET /Quota: Retorna todas as cotas.
+- GET /Quota/consortium/{consortiumId}: Retorna cotas por ID do consórcio.
+- GET /Quota/{id}: Retorna uma cota pelo ID.
+- POST /Quota: Cria uma nova cota.
+- POST /Quota/buy/{id}: Compra uma cota.
+- PUT /Quota: Atualiza uma cota.
+- DELETE /Quota/{id}: Deleta uma cota.
 
-git checkout -b feature/nome-da-sua-funcionalidade
+Carteira
 
-3. Faça commit das suas alterações:
+- GET /Wallet: Retorna todas as carteiras.
+- GET /Wallet/{id}: Retorna uma carteira pelo ID.
+- POST /Wallet/credit: Credita um valor na carteira do usuário autenticado.
 
-git commit -am 'Adicionei uma funcionalidade'
+Segurança
 
-4. Faça push para a branch:
+- Autenticação JWT é utilizada para proteger endpoints. Tokens são necessários para acessar a maioria dos endpoints, exceto para login e criação de usuários.
 
-git push origin feature/nome-da-sua-funcionalidade
+Testes
 
-5. Crie um novo Pull Request.
+- Testes são implementados no projeto Starcatcher.Api.Tests.
+- Utilize o seguinte comando para rodar os testes:
+  dotnet test
 
-**Licença**
+Contribuição
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para mais detalhes.
+1. Faça um fork do projeto.
+2. Crie uma branch para sua feature (git checkout -b feature/nova-feature).
+3. Commit suas mudanças (git commit -m 'Adiciona nova feature').
+4. Suba a branch (git push origin feature/nova-feature).
+5. Abra um Pull Request.
+
+Contato
+
+Para dúvidas ou suporte, entre em contato com enzo.vieira@newm.com.br
