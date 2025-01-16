@@ -117,7 +117,6 @@ const ClientProfilePageContent = ({ setCurrentPage }) => {
         },
       });
 
-      // Atualizando a lista de parcelas após o pagamento
       const updatedInstallments = installments.map((installment) => {
         if (installment.id === installmentId) {
           return { ...installment, status: "Pago" };
@@ -200,7 +199,6 @@ const ClientProfilePageContent = ({ setCurrentPage }) => {
         </div>
       </div>
 
-      {/* Modal de edição do cliente */}
       {isEditModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded shadow-lg w-full max-w-3xl">
@@ -255,7 +253,6 @@ const ClientProfilePageContent = ({ setCurrentPage }) => {
         </div>
       )}
 
-      {/* Modal de parcelas */}
       {isInstallmentModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded shadow-lg w-96 max-h-[80vh] overflow-y-auto">
