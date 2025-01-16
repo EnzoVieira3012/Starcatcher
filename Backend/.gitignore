@@ -1,0 +1,84 @@
+# Arquivos temporários do Visual Studio, resultados de build e
+# arquivos gerados por complementos populares do Visual Studio.
+
+## Arquivos específicos do usuário
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Arquivos específicos do usuário (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+## Resultados de build
+[Dd]ebug*/
+[Rr]elease*/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+## Diretório de cache/opções do Visual Studio 2015/2017
+.vs/
+.vscode/
+
+# Arquivos gerados automaticamente pelo Visual Studio 2017
+Generated\ Files/
+
+## Resultados de testes MSTest
+[Tt]est[Rr]esult*/ 
+[Bb]uild[Ll]og.*
+
+## Python
+*.pyc
+__pycache__/
+
+## Migrações do Entity Framework
+Migrations/
+
+## Específico do DotNet
+*.swp
+project.lock.json
+project.fragment.lock.json
+
+## Rider
+.idea/
+*.sln.iml
+
+## Mac
+.DS_Store
+
+## Logs
+*.log
+
+## Docker
+docker-compose.override.yml
+
+## Segredos
+secrets.json
+
+# Arquivos gerados por pacotes NuGet
+*.nupkg
+*.snupkg
+.nuget/
+
+# Arquivos de backup do Visual Studio Code
+*.code-workspace
+.history/
+
+# Arquivos de cache do Visual Studio Code
+.vscode/*
+
+# Arquivos de cache do usuário
+*.cache
+*.old
+
+# Arquivos de configuração do usuário
+*.config
+
+# Arquivos temporários e de lock
+*.lock
+*.tmp
+*.temp

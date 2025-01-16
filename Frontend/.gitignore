@@ -1,0 +1,91 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs
+*.log
+yarn.lock
+
+# Dependency directories
+jspm_packages/
+
+# Build directories
+build/
+dist/
+
+# Caches
+.cache/
+.next/
+.nuxt/
+out/
+temp/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Tailwind CSS
+tailwind.config.js
+
+# Parcel-bundler cache
+.cache/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Yarn Integrity file
+.yarn-integrity
+.pnp.*
+
+# IDE
+*.iml
+*.ipr
+*.iws
+
+# Storybook build outputs
+storybook-static
+
+# ESLint cache
+.eslintcache
+
+# Stylelint cache
+.stylelintcache
+
+# Webpack cache
+.cache/
+
+# Prettier cache
+.prettier-cache
+
+# Build artifacts
+*.out
+*.tgz

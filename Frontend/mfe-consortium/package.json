@@ -1,0 +1,41 @@
+{
+  "name": "mfe-consortium",
+  "version": "1.0.0",
+  "description": "Microfrontend for consortium management",
+  "moduleType": "microfrontend",
+  "scripts": {
+    "start": "webpack serve --config webpack.config.js",
+    "build": "webpack --config webpack.config.js",
+    "start:mf": "yarn build && yarn start"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.0.0",
+    "graphql": "^15.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-redux": "^8.0.0",
+    "react-router-dom": "^7.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "autoprefixer": "^10.0.0",
+    "babel-jest": "^29.7.0",
+    "babel-loader": "^8.0.0",
+    "css-loader": "^5.0.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.0.0",
+    "jest": "^29.7.0",
+    "postcss": "^8.0.0",
+    "postcss-loader": "^4.0.0",
+    "style-loader": "^2.0.0",
+    "tailwindcss": "^2.0.0",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0",
+    "webpack-dev-server": "^4.0.0"
+  }
+}
